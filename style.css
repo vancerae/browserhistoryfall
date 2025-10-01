@@ -14,12 +14,12 @@ html, body {
   margin-left: 50px;
   margin-right: 50px;
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.25;
 }
 
 /* Headings use Oswald */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Oswald", Impact, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Oswald";
 }
 
 /* Make logos inline with text */
@@ -30,6 +30,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100px;              /* match current text size */
   vertical-align: middle;   /* align nicely with text baseline */
 }
+p {
+  margin: 0;           /* kill default top/bottom margins */
+}
+
 
 /* Optional: spacing helper for text + logo combos */
 .logo-left { margin-right: 0.4em; }
