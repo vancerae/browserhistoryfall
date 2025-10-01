@@ -30,12 +30,32 @@ h1, h2, h3, h4, h5, h6 {
   vertical-align: -0.2em;   /* align nicely with text baseline */
 }
 
-p {
-  margin: 0; 
-  line-height: 1.25;           /* kill default top/bottom margins */
+/* Tight paragraphs with no extra top gap so text starts at image top */
+.browser p {
+  margin: 0;
+  line-height: 1.25;
 }
 
+/* Space between sections (not between lines) */
+.browser + .browser { margin-top: 0.75rem; }
 
-/* Optional: spacing helper for text + logo combos */
-.logo-left { margin-right: 0.5em; }
-.logo-right { margin-left: 0.5em; }
+/* Make the image float left so text wraps on its right */
+.wrap-logo {
+  float: left;
+  width: 100px;       /* adjust to your taste */
+  height: auto;       /* keep aspect ratio */
+  margin: 0 0.75rem 0.4rem 0; /* right + bottom spacing around image */
+  display: block;     /* avoids tiny baseline gap under images */
+}
+
+/* Optional: improve wrap curve (supported browsers) */
+@supports (shape-outside: margin-box) {
+  .wrap-logo { shape-outside: margin-box; }
+}
+
+/* Clear the float at the end of each section so next sections don’t wrap around */
+.browser::after {
+  content: "";
+  display: block;
+  clear: both;
+}
