@@ -28,8 +28,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;          /* keep it in the text flow */
   height: auto;
   width: 100px;              /* match current text size */
-  vertical-align: middle;   /* align nicely with text baseline */
+  vertical-align: -0.2em;   /* align nicely with text baseline */
 }
+
 p {
   margin: 0;           /* kill default top/bottom margins */
 }
