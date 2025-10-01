@@ -23,8 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Make logos inline with text */
-.inline-logo,
-.logo {
+.inline-logo{
   display: inline-block;          /* keep it in the text flow */
   height: auto;
   width: 100px;              /* match current text size */
@@ -32,10 +31,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin: 0;           /* kill default top/bottom margins */
+  margin: 0; 
+  line-height: 1.25;           /* kill default top/bottom margins */
 }
 
 
 /* Optional: spacing helper for text + logo combos */
-.logo-left { margin-right: 0.4em; }
-.logo-right { margin-left: 0.4em; }
+.logo-left { margin-right: 0.5em; }
+.logo-right { margin-left: 0.5em; }
