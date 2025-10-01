@@ -1,4 +1,4 @@
-/* Typography & page defaults */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@400;600;700&display=swap');
 
 :root {
@@ -9,53 +9,46 @@
 html, body {
   background: var(--page-bg);
   color: var(--text-color);
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 10px 50px;
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.25;
 }
 
 /* Headings use Oswald */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Oswald";
+  font-family: "Oswald", Impact, "Helvetica Neue", Arial, sans-serif;
+  margin-top: 0.4em;
+  margin-bottom: 0.2em;
 }
 
-/* Make logos inline with text */
-.inline-logo{
-  display: inline-block;          /* keep it in the text flow */
-  height: auto;
-  width: 100px;              /* match current text size */
-  vertical-align: -0.2em;   /* align nicely with text baseline */
-}
+/* Paragraph spacing: tight, no extra gaps */
+p { margin: 0; line-height: 1.25; }
+p + p { margin-top: 0.35rem; } /* set to 0 if you want zero block gap */
 
-/* Tight paragraphs with no extra top gap so text starts at image top */
-.browser p {
-  margin: 0;
-  line-height: 1.25;
-}
-
-/* Space between sections (not between lines) */
-.browser + .browser { margin-top: 0.75rem; }
-
-/* Make the image float left so text wraps on its right */
+/* Wrap image on the LEFT; text flows on the RIGHT */
 .wrap-logo {
   float: left;
-  width: 100px;       /* adjust to your taste */
-  height: auto;       /* keep aspect ratio */
-  margin: 0 0.75rem 0.4rem 0; /* right + bottom spacing around image */
-  display: block;     /* avoids tiny baseline gap under images */
+  width: 100px;     /* adjust to taste (e.g., 80–120px) */
+  height: auto;     /* keep aspect ratio */
+  margin: 0 12px 8px 0; /* space to the right and bottom of image */
+  display: block;   /* avoid baseline whitespace under image */
 }
 
-/* Optional: improve wrap curve (supported browsers) */
+/* Improve wrap curve where supported */
 @supports (shape-outside: margin-box) {
   .wrap-logo { shape-outside: margin-box; }
 }
 
-/* Clear the float at the end of each section so next sections don’t wrap around */
+/* Each browser section clears the float at the end */
 .browser::after {
   content: "";
   display: block;
   clear: both;
+}
+
+/* Remove any old inline-logo sizing that could fight floats */
+.inline-logo, .logo {
+  height: auto;
+  width: auto;
+  vertical-align: baseline;
 }
