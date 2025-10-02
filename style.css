@@ -1,54 +1,110 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@400;600;700&display=swap');
-
-:root {
-  --page-bg: ivory;
-  --text-color: darkblue;
-}
+/* ------------ Base page styles ------------ */
 
 html, body {
-  background: var(--page-bg);
-  color: var(--text-color);
   margin: 10px 50px;
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.25;
+  line-height: 1.4;
+  background: #fffdfa;
+  color: darkblue; 
 }
 
-/* Headings use Oswald */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Oswald", Impact, "Helvetica Neue", Arial, sans-serif;
-  margin-top: 0.4em;
-  margin-bottom: 0.2em;
+  margin: 0.4em 0 0.25em;
+  line-height: 1.2;
 }
 
-/* Paragraph spacing: tight, no extra gaps */
-p { margin: 0; line-height: 1.25; }
-p + p { margin-top: 0.35rem; } /* set to 0 if you want zero block gap */
+p { margin: 0; }
+p + p { margin-top: 0.5rem; }
 
-/* Wrap image on the LEFT; text flows on the RIGHT */
-.wrap-logo {
+/* Make all images behave nicely by default */
+img { max-width: 100%; height: auto; display: block; }
+
+/* ------------ Nav bar (replaces TOC header) ------------ */
+
+.nav-bar {
+  margin-block: 1rem;
+  background: #f6f7f8;
+  border-block: 1px solid #e6e6e6;
+}
+
+.nav-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  display: block;
+}
+
+.nav-bar a:hover,
+.nav-bar a:focus {
+  background: #e9ecef;
+}
+
+/* ------------ Introduction (full width) ------------ */
+/* Nothing special needed; it naturally spans full width. */
+#introduction { margin-block: 1.25rem; }
+
+/* ------------ Three-column browser grid ------------ */
+
+#browsers {
+  display: grid;
+  grid-template-columns: 300px 300px 300px; /* exactly three columns */
+  gap: 24px;
+  justify-content: center;                  /* centers the 900px grid */
+  margin-block: 2rem;
+}
+
+#browsers .browser {
+  box-sizing: border-box;
+}
+
+/* ------------ Logo: larger, left-aligned with text wrap ------------ */
+
+/* Place logo on the LEFT, larger, with text wrapping around it */
+#browsers .wrap-logo {
   float: left;
-  width: 100px;     /* adjust to taste (e.g., 80–120px) */
-  height: auto;     /* keep aspect ratio */
-  margin: 0 12px 8px 0; /* space to the right and bottom of image */
-  display: block;   /* avoid baseline whitespace under image */
+  width: 100px;             /* adjust to 140–180px to taste */
+  height: auto;
+  margin: 0 12px 8px 0;     /* space between image and text */
+  object-fit: contain;
 }
 
-/* Improve wrap curve where supported */
+/* Improve the wrap curve where supported */
 @supports (shape-outside: margin-box) {
-  .wrap-logo { shape-outside: margin-box; }
+  #browsers .wrap-logo { shape-outside: margin-box; }
 }
 
-/* Each browser section clears the float at the end */
-.browser::after {
+/* Keep later paragraphs from wrapping awkwardly beside a tall logo */
+#browsers .browser p + p {
+  clear: left;
+}
+
+/* Ensure each .browser section clears floats at the end */
+#browsers .browser::after {
   content: "";
   display: block;
   clear: both;
 }
 
-/* Remove any old inline-logo sizing that could fight floats */
-.inline-logo, .logo {
-  height: auto;
-  width: auto;
-  vertical-align: baseline;
+/* ------------ Responsive fallback ------------ */
+
+@media (max-width: 960px) {
+  #browsers { grid-template-columns: 1fr; } /* stack vertically */
+  #browsers .wrap-logo { width: 140px; }    /* slightly smaller on narrow screens */
 }
+
+@media (max-width: 480px) {
+  body { margin: 10px 16px; }
+  #browsers .wrap-logo { width: 120px; }
+}
+
