@@ -91,6 +91,7 @@ p + p { margin-top: 0.35rem; } /* set to 0 if you want zero block gap */
 /* Small logo floated inside first paragraph */
 .wrap-logo {
   width: 100px;
+  height: auto;
   object-fit: contain;
   float: left;
   margin: 0 10px 6px 0;
