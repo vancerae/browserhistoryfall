@@ -107,3 +107,7 @@ img { max-width: 100%; height: auto; display: block; }
   body { margin: 10px 16px; }
   #browsers .wrap-logo { width: 120px; }
 }
+
+body {
+  color: darkblue;         /* or #00008B if you prefer hex */
+}
