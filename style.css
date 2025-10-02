@@ -52,3 +52,52 @@ p + p { margin-top: 0.35rem; } /* set to 0 if you want zero block gap */
   width: auto;
   vertical-align: baseline;
 }
+
+/* --- Simple horizontal nav bar --- */
+.nav-bar {
+  border-block: 1px solid #e6e6e6;
+  margin-block: 1rem;
+  background: #fafafa;
+}
+.nav-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.nav-bar a {
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  display: block;
+  border-radius: 6px;
+}
+.nav-bar a:hover,
+.nav-bar a:focus { background: #efefef; }
+
+/* --- Intro remains full-width by default --- */
+
+/* --- Three fixed 300px columns for the browser sections --- */
+#browsers {
+  display: grid;
+  grid-template-columns: 300px 300px 300px; /* exactly three columns */
+  gap: 24px;
+  justify-content: center;                   /* center the 900px grid */
+  margin-block: 2rem;
+}
+#browsers .browser { box-sizing: border-box; }
+
+/* Small logo floated inside first paragraph */
+.wrap-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  float: left;
+  margin: 0 10px 6px 0;
+}
+
+/* Responsive fallback: stack on narrow screens */
+@media (max-width: 960px) {
+  #browsers { grid-template-columns: 1fr; }
+}
